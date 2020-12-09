@@ -1,0 +1,52 @@
+﻿@model EnsekMeter.Web.Models.FileUploadViewModel
+
+<h4>Meter Reading</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form enctype="multipart/form-data" method="post">
+            <dl>
+                <dt>
+                    <label asp-for="FormFile"></label>
+                </dt>
+                <dd>
+                    <input asp-for="FormFile" type="file">
+                    <span asp-validation-for="FormFile"></span>
+                </dd>
+            </dl>
+            <input asp-page-handler="Upload" class="btn" type="submit" value="Upload" />
+        </form>
+
+    </div>
+</div>
+@if (Model.Result != null)
+{
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Result.SuccesfulUploads)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Result.SuccesfulUploads)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Result.FailedUploads)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Result.FailedUploads)
+        </dd>
+        @foreach (var item in Model.Result.UploadErrors)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(modelitem => item)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(modelitem => item)
+            </dd>
+        }
+    </dl>
+}
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

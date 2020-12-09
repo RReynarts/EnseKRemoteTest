@@ -1,0 +1,42 @@
+﻿@model EnsekMeter.Web.Models.MeterReadingViewModel
+
+<h4>Meter Reading</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="MeterReadingId" class="control-label"></label>
+                <input asp-for="MeterReadingId" class="form-control" />
+                <span asp-validation-for="MeterReadingId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AccountId" class="control-label"></label>
+                <input asp-for="AccountId" class="form-control" />
+                <span asp-validation-for="AccountId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MeterReadingDateTime" class="control-label"></label>
+                <input asp-for="MeterReadingDateTime" class="form-control" />
+                <span asp-validation-for="MeterReadingDateTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MeterReadValue" class="control-label"></label>
+                <input asp-for="MeterReadValue" class="form-control" />
+                <span asp-validation-for="MeterReadValue" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink("Back to Account", "Details", "Accounts", new { id = Model.AccountId })
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

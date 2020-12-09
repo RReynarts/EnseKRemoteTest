@@ -1,0 +1,47 @@
+﻿@model IEnumerable<EnsekMeter.Web.Models.MeterReadingViewModel>
+
+<p>
+    @Html.ActionLink("Create New", "Create", "MeterReadings", new { accountId = ViewBag.AccountId  })
+</p>
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MeterReadingId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AccountId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MeterReadingDateTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MeterReadValue)
+        </th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MeterReadingId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AccountId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MeterReadingDateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MeterReadValue)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", "MeterReadings", new {  id=item.MeterReadingId  }) |
+                @Html.ActionLink("Details", "Details", "MeterReadings", new {  id=item.MeterReadingId  }) |
+                @Html.ActionLink("Delete", "Delete", "MeterReadings", new {  id=item.MeterReadingId, accountId=item.AccountId  })
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
